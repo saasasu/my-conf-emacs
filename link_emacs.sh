@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the source .emacs file in this repository
-REPO_EMACS="$(pwd)/emacs"
+REPO_EMACS="$(pwd)/.emacs"
 
 # Define the target .emacs file in the user's home directory
 HOME_EMACS="${HOME}/.emacs"
