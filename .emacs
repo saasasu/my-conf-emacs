@@ -69,6 +69,9 @@
   (global-set-key (kbd "C-=") 'er/expand-region)
   )
 
-;; (use-package evil
-;;   :config
-;;   (evil-mode))
+(use-package ligature
+  :config
+  ;; Enable all Hasklig ligatures in programming modes
+  (ligature-set-ligatures 'prog-mode '("<*" "<*>" "<+>" "<$>" "***" "<|" "|>"  "<|>" "!!" "||" "==="
+                                       "==>" "<<<" ">>>" "<>" "+++" "<-" "->" "=>" ">>" "<<" ">>="
+                                       "=<<" ".." "..." "::" "-<" ">-" "-<<" ">>-" "++" "/=" "=="))
