@@ -8,7 +8,8 @@
  '(display-line-numbers-type 'relative)
  '(global-display-line-numbers-mode t)
  '(package-selected-packages
-   '(auctex expand-region expand-selection magit pdf-tools slime vterm)))
+   '(auctex expand-region expand-selection ligature magit pdf-tools slime
+	    vterm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -75,3 +76,4 @@
   (ligature-set-ligatures 'prog-mode '("<*" "<*>" "<+>" "<$>" "***" "<|" "|>"  "<|>" "!!" "||" "==="
                                        "==>" "<<<" ">>>" "<>" "+++" "<-" "->" "=>" ">>" "<<" ">>="
                                        "=<<" ".." "..." "::" "-<" ">-" "-<<" ">>-" "++" "/=" "=="))
+  (global-ligature-mode t))
