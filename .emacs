@@ -51,17 +51,29 @@
 
 (use-package auctex
   :config
-    (setq TeX-auto-save t)
-    (setq TeX-parse-self t)
-    (setq-default TeX-master nil)
-    (add-hook 'LaTeX-mode-hook 'visual-line-mode)
-    (add-hook 'LaTeX-mode-hook 'flyspell-mode)
-    (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-    (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-    (setq reftex-plug-into-AUCTeX t)
-    )
+  (setq TeX-auto-save t)
+  (setq TeX-parse-self t)
+  (setq TeX-source-correlate-mode t)
+  (setq-default TeX-master nil)
+  (add-hook 'LaTeX-mode-hook 'visual-line-mode)
+  (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+  (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+  (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+  (setq reftex-plug-into-AUCTeX t))
 
-(use-package pdf-tools)
+(use-package pdf-tools
+  :init
+  (pdf-tools-install)
+  :config
+  (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+	TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view))
+	TeX-source-correlate-start-server t)
+  (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+  (setq pdf-view-use-scaling t)
+  (setq pdf-view-resize-factor 1.05)
+  :bind (:map pdf-view-mode-map
+              ("<left>" . pdf-view-previous-page-command)
+              ("<right>" . pdf-view-next-page-command)))
 
 (use-package magit)
 
