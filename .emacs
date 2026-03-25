@@ -17,11 +17,15 @@
 
 ;; Enable relative line numbers globally
 (setq display-line-numbers-type 'relative)
-(global-display-line-numbers-mode t)
+
+;; Display line numbers globally
+;; (global-display-line-numbers-mode t)
 
 ;; Optional: enable only in programming/text modes
-(add-hook 'prog-mode-hook #'display-line-numbers-mode)
-(add-hook 'text-mode-hook #'display-line-numbers-mode)
+;; (add-hook 'prog-mode-hook #'display-line-numbers-mode)
+;; (add-hook 'text-mode-hook #'display-line-numbers-mode)
+(add-hook 'prog-mode-hook (lambda() (display-line-numbers-mode 1)))
+(add-hook 'text-mode-hook (lambda() (display-line-numbers-mode 1)))
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
