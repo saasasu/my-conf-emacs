@@ -76,7 +76,14 @@
     (setq pdf-view-resize-factor 1.05)
     :bind (:map pdf-view-mode-map
                 ("<left>" . pdf-view-previous-page-command)
-                ("<right>" . pdf-view-next-page-command))))
+                ("<right>" . pdf-view-next-page-command)))
+
+  (use-package ispell
+    :init
+    (setenv "LANG" "en_GB.UTF-8")
+    :config
+    (setq ispell-program-name "C:\\msys64\\mingw64\\bin\\hunspell.exe"
+          ispell-dictionary "en_GB")))
 
 (use-package magit)
 
