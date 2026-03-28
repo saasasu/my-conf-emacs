@@ -8,6 +8,9 @@
 ;; Disable bell sound
 (setq ring-bell-function 'ignore)
 
+;; Disable toolbar
+(tool-bar-mode 0)
+
 ;; Enable relative line numbers globally
 (setq display-line-numbers-type 'relative)
 
