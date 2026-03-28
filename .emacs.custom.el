@@ -1,5 +1,8 @@
 ;; This file is extends the base .emacs file
-;; Remember to add (setq custom-file "~/.emacs.custom.el") inside .emacs
+;; Remember to add the following inside .emacs to load this custom file
+;; (setq custom-file "~/.emacs.custom.el")
+;; (when (file-exists-p custom-file)
+;;   (load custom-file))
 ;; Also remember to set the color scheme and font
 
 ;; Disable bell sound
