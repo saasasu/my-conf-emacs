@@ -1,4 +1,6 @@
 ;; This file is extends the base .emacs file
+;; Remember to add (setq custom-file "~/.emacs.custom.el") inside .emacs
+;; Also remember to set the color scheme and font
 
 ;; Disable bell sound
 (setq ring-bell-function 'ignore)
