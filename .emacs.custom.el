@@ -6,7 +6,7 @@
 ;; Also remember to set the font via customization menu: M-x customize-face RET
 
 ;; Theme and font
-(load-theme '(modus-vivendi))
+(load-theme 'modus-vivendi)
 
 ;; Disable bell sound
 (setq ring-bell-function 'ignore)
