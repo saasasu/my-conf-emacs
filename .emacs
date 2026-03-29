@@ -1,9 +1,9 @@
-;; This file is extends the base .emacs file
-;; Remember to add the following inside .emacs to load this custom file
-;; (setq custom-file "~/.emacs.custom.el")
-;; (when (file-exists-p custom-file)
-;;   (load custom-file))
-;; Also remember to set the font via customization menu: M-x customize-face RET
+;;; -*- lexical-binding: t -*-
+;; Remember to set the Hasklig font via font menu: super-t 
+
+(setq custom-file "~/.emacs.custom.el")
+(when (file-exists-p custom-file)
+  (load custom-file))
 
 ;; Theme and font
 (load-theme 'modus-vivendi)

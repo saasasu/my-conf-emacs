@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Define the source .emacs.custom.el file in this repository
-REPO_EMACS="$(pwd)/.emacs.custom.el"
+# Define the source .emacs file in this repository
+REPO_EMACS="$(pwd)/.emacs"
 
-# Define the target .emacs.custom.el file in the user's home directory
-HOME_EMACS="${HOME}/.emacs.custom.el"
+# Define the target .emacs file in the user's home directory
+HOME_EMACS="${HOME}/.emacs"
 
 echo "Checking for existing ${HOME_EMACS}..."
 
