@@ -97,3 +97,4 @@
                                        "=<<" ".." "..." "::" "-<" ">-" "-<<" ">>-" "++" "/=" "=="))
   (global-ligature-mode t))
 
+(use-package epresent)
