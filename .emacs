@@ -60,7 +60,12 @@
     (add-hook 'LaTeX-mode-hook 'flyspell-mode)
     (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
     (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-    (setq reftex-plug-into-AUCTeX t))
+    (add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
+
+    (setq reftex-plug-into-AUCTeX t)
+
+    ;; Ensure RefTeX looks for bib files in the current directory
+    (setq reftex-use-fonts t))
 
   (use-package pdf-tools
     :init
