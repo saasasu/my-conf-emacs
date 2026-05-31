@@ -26,6 +26,19 @@
 (add-hook 'prog-mode-hook (lambda() (display-line-numbers-mode 1)))
 (add-hook 'text-mode-hook (lambda() (display-line-numbers-mode 1)))
 
+;; Enable automatic session saving and restoring
+(desktop-save-mode 1)
+
+;; Save session when quitting
+(setq desktop-save t)
+
+;; Save every 5 minutes if there are changes
+(setq desktop-auto-save-timeout 300)
+
+;; Automatically restore without asking
+(setq desktop-restore-frames t
+      desktop-load-locked-desktop t)
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
