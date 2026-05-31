@@ -110,6 +110,20 @@
 
 (use-package magit)
 
+(use-package diff-hl
+  :ensure t
+  :hook
+  ;; Enable globally
+  (after-init . global-diff-hl-mode)
+  ;; Update on save
+  (after-save . diff-hl-update)
+  ;; Update after Magit refresh
+  (magit-post-refresh . diff-hl-magit-post-refresh)
+  :config
+  ;; Terminal support (no fringe)
+  (unless (display-graphic-p)
+    (diff-hl-margin-mode)))
+
 (use-package expand-region
   :config
   (global-set-key (kbd "C-=") 'er/expand-region))
