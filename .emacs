@@ -94,6 +94,13 @@
                 ("<left>" . pdf-view-previous-page-command)
                 ("<right>" . pdf-view-next-page-command)))
 
+  ;; Spellcheck setup on Windows
+  ;; Install aspell/hunspell in MINGW64 Shell
+  ;; pacman -S mingw-w64-x86_64-aspell
+  ;; pacman -S mingw-w64-x86_64-aspell-en
+  ;; pacman -S mingw-w64-x86_64-hunspell
+  ;; pacman -S mingw-w64-x86_64-hunspell-en
+  ;; list location for language dictionaries: hunspell -D
   (use-package ispell
     :init
     (setenv "LANG" "en_GB.UTF-8")
