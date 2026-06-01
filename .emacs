@@ -58,8 +58,7 @@
   :config
   (setq inferior-lisp-program "sbcl"))
 
-(defvar writes-text nil)
-(when writes-text
+(when (getenv "WRITES_TEXT")
   (use-package auctex
     :config
     (setq TeX-auto-save t)
