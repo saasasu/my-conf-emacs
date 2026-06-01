@@ -54,7 +54,6 @@
 (setq use-package-always-ensure t
       use-package-expand-minimally t)
 
-;; SLIME
 (use-package slime
   :config
   (setq inferior-lisp-program "sbcl"))
@@ -96,10 +95,7 @@
 
   ;; Spellcheck setup on Windows
   ;; Install aspell/hunspell in MINGW64 Shell
-  ;; pacman -S mingw-w64-x86_64-aspell
-  ;; pacman -S mingw-w64-x86_64-aspell-en
-  ;; pacman -S mingw-w64-x86_64-hunspell
-  ;; pacman -S mingw-w64-x86_64-hunspell-en
+  ;; pacman -S mingw-w64-x86_64-aspell mingw-w64-x86_64-aspell-en mingw-w64-x86_64-hunspell mingw-w64-x86_64-hunspell-en
   ;; list location for language dictionaries: hunspell -D
   (use-package ispell
     :init
