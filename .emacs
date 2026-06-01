@@ -108,17 +108,13 @@
 
 (use-package diff-hl
   :ensure t
-  :hook
-  ;; Enable globally
-  (after-init . global-diff-hl-mode)
-  ;; Update on save
-  (after-save . diff-hl-update)
-  ;; Update after Magit refresh
-  (magit-post-refresh . diff-hl-magit-post-refresh)
+  :hook (dired-mode . diff-hl-dired-mode)
   :config
-  ;; Terminal support (no fringe)
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+  (global-diff-hl-mode 1)
+  (diff-hl-flydiff-mode 1)
   (unless (display-graphic-p)
-    (diff-hl-margin-mode)))
+    (diff-hl-margin-mode 1)))
 
 (use-package expand-region
   :config
