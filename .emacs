@@ -58,8 +58,6 @@
   :config
   (setq inferior-lisp-program "sbcl"))
 
-;; (use-package vterm)
-
 (defvar writes-text nil)
 (when writes-text
   (use-package auctex
