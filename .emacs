@@ -104,12 +104,10 @@
 (use-package magit)
 
 (use-package diff-hl
-  :ensure t
   :hook (dired-mode . diff-hl-dired-mode)
   :config
+  (global-diff-hl-mode)
   (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
-  (global-diff-hl-mode 1)
-  (diff-hl-flydiff-mode 1)
   (unless (display-graphic-p)
     (diff-hl-margin-mode 1)))
 
