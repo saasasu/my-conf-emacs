@@ -57,10 +57,6 @@
 (setq use-package-always-ensure t
       use-package-expand-minimally t)
 
-(use-package slime
-  :config
-  (setq inferior-lisp-program "sbcl"))
-
 (when (getenv "WRITES_TEXT")
   (use-package auctex
     :config
@@ -147,3 +143,123 @@
 	  fzf/position-bottom t
 	  fzf/window-height 15))
   )
+
+;; Programming setups on Linux/Mac
+(unless (eq system-type 'windows-nt)
+  ;; Global performance optimizations for LSP
+  (setq gc-cons-threshold (* 100 1024 1024)
+        read-process-output-max (* 1024 1024))
+
+  ;; Company Mode (autocompletion)
+  (use-package company
+    :hook (clojure-mode . company-mode)
+    :config
+    (setq company-minimum-prefix-length 1
+          company-idle-delay 0.0          ; Instant completion popup
+          company-tooltip-align-annotations t))
+
+  ;; Flycheck (syntax and error checking)
+  (use-package flycheck
+    :hook ((clojure-mode        . flycheck-mode)
+           (clojurescript-mode  . flycheck-mode)
+           (clojurec-mode       . flycheck-mode))
+    :config
+    (setq flycheck-check-syntax-automatically '(save mode-enabled))) ; Checks errors on save/open to save CPU
+
+  ;; LSP Mode (navigation, diagnostics, refactoring)
+  (use-package lsp-mode
+    :hook ((clojure-mode . lsp)
+           (clojurescript-mode . lsp)
+           (clojurec-mode . lsp))
+    :config
+    (setq lsp-enable-indentation nil         ; Let CIDER handle code indentation
+          lsp-enable-completion-at-point nil ; Let CIDER handle auto-completion data
+          lsp-lens-enable nil                ; Hides distracting reference counts
+          lsp-diagnostics-provider :flycheck ; Explicitly pipe LSP diagnostics into Flycheck
+          ))
+
+  ;; LSP Treemacs Integration
+  (use-package lsp-treemacs
+    :config
+    (setq treemacs-space-between-root-nodes nil))
+  
+  ;; Add language-specific packages here
+
+  ;; (use-package slime
+  ;;   :config
+  ;;   (setq inferior-lisp-program "sbcl"))
+  
+  (use-package clojure-mode)
+  
+  ;; CIDER (Clojure IDE)
+  (use-package cider
+    :defer t
+    :config
+    (setq cider-preferred-build-tool "lein" ; Configured for Leiningen
+          cider-repl-display-help nil
+          cider-font-lock-dynamically '(macro core function var)
+          cider-eldoc-display-for-symbol-at-point nil))
+  )
+
+;; Programming setups on Linux/Mac
+(unless (eq system-type 'windows-nt)
+  ;; Global performance optimizations for LSP
+  (setq gc-cons-threshold (* 100 1024 1024)
+        read-process-output-max (* 1024 1024))
+
+  ;; 1. Company Mode (enable globally for code buffers)
+  (use-package company
+    :hook (prog-mode . company-mode) ; works for all future programming languages
+    :config
+    (setq company-minimum-prefix-length 1
+          company-idle-delay 0.0
+          company-tooltip-align-annotations t))
+
+  ;; 2. Flycheck (base framework)
+  (use-package flycheck
+    :config
+    (setq flycheck-check-syntax-automatically '(save mode-enabled)))
+
+  ;; 3. LSP Mode (base framework)
+  (use-package lsp-mode
+    :commands lsp
+    :config
+    (setq lsp-lens-enable nil
+          lsp-diagnostics-provider :flycheck))
+
+  ;; 4. LSP Treemacs integration
+  (use-package lsp-treemacs
+    :config
+    (setq treemacs-space-between-root-nodes nil))
+
+  ;; Language configurations
+  
+  ;; Clojure
+  (use-package clojure-mode
+    :hook ((clojure-mode        . lsp)
+           (clojure-mode        . flycheck-mode)
+           (clojurescript-mode  . lsp)
+           (clojurescript-mode  . flycheck-mode)
+           (clojurec-mode       . lsp)
+           (clojurec-mode       . flycheck-mode))
+    :config
+    ;; Disable LSP completion/indentation only for Clojure so CIDER handles them
+    (add-hook 'clojure-mode-hook
+              (lambda ()
+                (setq-local lsp-enable-indentation nil)
+                (setq-local lsp-enable-completion-at-point nil))))
+
+  ;; CIDER (Clojure IDE)
+  (use-package cider
+    :defer t
+    :config
+    (setq cider-preferred-build-tool "lein"
+          cider-repl-display-help nil
+          cider-font-lock-dynamically '(macro core function var)
+          cider-eldoc-display-for-symbol-at-point nil))
+
+  ;; Example: How to add Python in the future
+  ;; (use-package python-mode
+  ;;   :hook ((python-mode . lsp)
+  ;;          (python-mode . flycheck-mode)))
+)
