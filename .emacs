@@ -68,7 +68,7 @@
     (add-hook 'LaTeX-mode-hook 'flyspell-mode)
     (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
     (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-    (add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
+    ;; (add-hook 'LaTeX-mode-hook 'turn-on-auto-fill) ; Disabled to avoid hard newline chars, use visual-line-mode
 
     (setq reftex-plug-into-AUCTeX t)
 
